@@ -14,8 +14,8 @@ def s3_get_client():
     s3_client = boto3.client(
         's3',
         region_name= 'ap-northeast-2',
-        aws_access_key_id= 'AKIA3HJWQVAIR3QIRBRU',
-        aws_secret_access_key= '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'
+        aws_access_key_id= '',
+        aws_secret_access_key= ''
     )
     return s3_client
     
