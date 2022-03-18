@@ -27,7 +27,6 @@ from utils.general import (LOGGER, check_requirements, clean_str)
 # from utils.torch_utils import torch_distributed_zero_first
 
 # Parameters
-HELP_URL = 'https://github.com/ultralytics/yolov3/wiki/Train-Custom-Data'
 IMG_FORMATS = ['bmp', 'jpg', 'jpeg', 'png', 'tif', 'tiff', 'dng', 'webp', 'mpo']  # acceptable image suffixes
 VID_FORMATS = ['mov', 'avi', 'mp4', 'mpg', 'mpeg', 'm4v', 'wmv', 'mkv']  # acceptable video suffixes
 WORLD_SIZE = int(os.getenv('WORLD_SIZE', 1))  # DPP
@@ -38,10 +37,10 @@ for orientation in ExifTags.TAGS.keys():
     if ExifTags.TAGS[orientation] == 'Orientation':
         break
 
-def LoadImages(path, key, img_size=640, stride=32, auto=True):
+def LoadImages(path, img_size=640, stride=32, auto=True):
     #  image/video dataloader, i.e. `python detect.py --source image.jpg/vid.mp4`
 
-    assert key.split('.')[-1].lower() in IMG_FORMATS, 'Image format not supported'
+    # assert key.split('.')[-1].lower() in IMG_FORMATS, 'Image format not supported'
 
     img0 = path
     assert img0 is not None, f'Image Not Found {path}'
@@ -53,6 +52,6 @@ def LoadImages(path, key, img_size=640, stride=32, auto=True):
     img = img.transpose((2, 0, 1))[::-1]  # HWC to CHW, BGR to RGB
     img = np.ascontiguousarray(img)
 
-    s = f'image 1/1 {key}: '
+    s = f'image 1/1 food: '
 
-    return path, img, img0, s
+    return img, img0, s
